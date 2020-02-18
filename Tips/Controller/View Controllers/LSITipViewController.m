@@ -7,12 +7,26 @@
 //
 
 #import "LSITipViewController.h"
+#import "CARTipController.h"
 
 @interface LSITipViewController ()
 
 // Private Properties
+@property (nonatomic) double totel;
+@property (nonatomic) int split;
+@property (nonatomic) double percentage;
+@property (nonatomic) double tip;
+@property (nonatomic) CARTipController *tipController;
 
-// Private IBOutlets
+// MARK: - Outlets
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
+@property (weak, nonatomic) IBOutlet UITextField *totalTextField;
+@property (weak, nonatomic) IBOutlet UILabel *splitLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tipPercentageLabel;
+@property (weak, nonatomic) IBOutlet UIStepper *splitStepper;
+@property (weak, nonatomic) IBOutlet UISlider *tipPercentageSlider;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 // Private Methods
 
@@ -26,7 +40,7 @@
 }
 
 - (void)calculateTip {
-    // TODO: Calculate the tip using the values from the UI
+    
 }
 
 - (void)updateViews {
@@ -40,6 +54,17 @@
 }
 
 // MARK: - IBActions
+- (IBAction)updateSplit:(UIStepper *)sender {
+    NSLog(@"split: %f", self.splitStepper.value);
+}
+
+- (IBAction)updatePercentage:(UISlider *)sender {
+    NSLog(@"slider: %f", self.tipPercentageSlider.value);
+}
+
+- (IBAction)saveTip:(UIButton *)sender {
+    NSLog(@"Saved Tip!");
+}
 
 
 // TODO: Connect actions for splitChanged, sliderChanged, and Save Tip button

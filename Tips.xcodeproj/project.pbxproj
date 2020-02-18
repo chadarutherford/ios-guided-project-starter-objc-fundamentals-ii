@@ -15,6 +15,7 @@
 		461E8AAB23EC7AFA00C1F2B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 461E8AAA23EC7AFA00C1F2B7 /* main.m */; };
 		461E8AB923EC97E200C1F2B7 /* LSITipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 461E8AB823EC97E200C1F2B7 /* LSITipViewController.m */; };
 		63BD595623FC541400FD5E88 /* CARTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BD595523FC541400FD5E88 /* CARTip.m */; };
+		63BD595B23FC593200FD5E88 /* CARTipController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BD595A23FC593200FD5E88 /* CARTipController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		461E8AB823EC97E200C1F2B7 /* LSITipViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSITipViewController.m; sourceTree = "<group>"; };
 		63BD595423FC541400FD5E88 /* CARTip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CARTip.h; sourceTree = "<group>"; };
 		63BD595523FC541400FD5E88 /* CARTip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CARTip.m; sourceTree = "<group>"; };
+		63BD595923FC593200FD5E88 /* CARTipController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CARTipController.h; sourceTree = "<group>"; };
+		63BD595A23FC593200FD5E88 /* CARTipController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CARTipController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,20 +68,20 @@
 			isa = PBXGroup;
 			children = (
 				63BD595323FC53F000FD5E88 /* Model */,
-				467F766323F2253000A284A5 /* View Controller */,
-				467F766723F2256000A284A5 /* Storyboards */,
+				63BD595C23FC5FF200FD5E88 /* View */,
+				63BD595723FC590500FD5E88 /* Controller */,
 				467F766623F2255000A284A5 /* Resources */,
 			);
 			path = Tips;
 			sourceTree = "<group>";
 		};
-		467F766323F2253000A284A5 /* View Controller */ = {
+		467F766323F2253000A284A5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				461E8AB723EC97E200C1F2B7 /* LSITipViewController.h */,
 				461E8AB823EC97E200C1F2B7 /* LSITipViewController.m */,
 			);
-			path = "View Controller";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		467F766623F2255000A284A5 /* Resources */ = {
@@ -111,6 +114,32 @@
 				63BD595523FC541400FD5E88 /* CARTip.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		63BD595723FC590500FD5E88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63BD595823FC591B00FD5E88 /* Model Controller */,
+				467F766323F2253000A284A5 /* View Controllers */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		63BD595823FC591B00FD5E88 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63BD595923FC593200FD5E88 /* CARTipController.h */,
+				63BD595A23FC593200FD5E88 /* CARTipController.m */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		63BD595C23FC5FF200FD5E88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				467F766723F2256000A284A5 /* Storyboards */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BD595B23FC593200FD5E88 /* CARTipController.m in Sources */,
 				461E8A9A23EC7AF900C1F2B7 /* AppDelegate.m in Sources */,
 				461E8AB923EC97E200C1F2B7 /* LSITipViewController.m in Sources */,
 				63BD595623FC541400FD5E88 /* CARTip.m in Sources */,
