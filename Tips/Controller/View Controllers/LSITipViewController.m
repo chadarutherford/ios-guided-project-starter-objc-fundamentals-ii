@@ -8,8 +8,9 @@
 
 #import "LSITipViewController.h"
 #import "CARTipController.h"
+#import "CARTip.h"
 
-@interface LSITipViewController ()
+@interface LSITipViewController () <UITableViewDelegate, UITableViewDataSource>
 
 // Private Properties
 @property (nonatomic) double total;
@@ -36,7 +37,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tipController = [[CARTipController alloc] init];
+    [self.totalTextField addTarget:self action:@selector(calculateTip) forControlEvents:UIControlEventEditingDidEndOnExit];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 - (void)calculateTip {
@@ -57,8 +65,11 @@
 }
 
 - (void)saveTipNamed:(NSString *)name {
-    
-    // TODO: Save the tip to the controller and update tableview
+    [self.tipController createTipWithName:name
+                                    total:self.total
+                               splitCount:self.split
+                            tipPercentage:self.percentage];
+    [self.tableView reloadData];
 }
 
 // MARK: - IBActions
@@ -71,24 +82,35 @@
 }
 
 - (IBAction)saveTip:(UIButton *)sender {
-    NSLog(@"Saved Tip!");
+    [self showSaveTipAlert];
 }
 
 // MARK: - UITableViewDataSource
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tipController.tips.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TipCell" forIndexPath:indexPath];
+    CARTip *tip = [self.tipController.tips objectAtIndex:indexPath.row];
+    cell.textLabel.text = tip.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"$%0.2f", tip.total];
+    return cell;
+}
 
 // MARK: - UITableViewDelegate
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-// TODO: Load the selected tip from the controller
-
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CARTip *tip = [self.tipController.tips objectAtIndex:indexPath.row];
+    self.total = tip.total;
+    self.totalTextField.text = [NSString stringWithFormat:@"$%0.2f", tip.total];
+    self.percentage = tip.tipPercentage;
+    self.split = tip.splitCount;
+    double tipAmount = self.total * (self.percentage / 100.0);
+    self.tip = tipAmount / self.split;
+    [self updateViews];
+}
 
 // MARK: - Alert Helper
 
