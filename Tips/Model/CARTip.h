@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CARTip : NSObject
 
 // public properties
-@property NSString *name;
-@property double total;
-@property int splitCount;
-@property double tipPercentage;
+@property (nonatomic, readonly, copy) NSString *name;
+@property (nonatomic, readonly) double total;
+@property (nonatomic, readonly) int splitCount;
+@property (nonatomic, readonly) double tipPercentage;
 
 - (instancetype) initWithName: (NSString *) name
                         total: (double) total

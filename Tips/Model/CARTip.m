@@ -16,7 +16,7 @@
                 tipPercentage:(double)tipPercentage {
     self = [super init];
     if (self) {
-        _name = name;
+        _name = [name copy];
         _total = total;
         _splitCount = splitCount;
         _tipPercentage = tipPercentage;
